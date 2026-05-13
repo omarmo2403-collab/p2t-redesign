@@ -1,6 +1,6 @@
 # Perfect 2 Trade — Redesign
 
-A static HTML/CSS redesign for [perfect2trade.uk](https://perfect2trade.uk) (UK trade supplies e-commerce) with a Cox & Cox-inspired editorial aesthetic.
+A static HTML/CSS redesign for [perfect2trade.uk](https://perfect2trade.uk) (UK trade supplies e-commerce) .
 
 **Live preview:** https://omarmo2403-collab.github.io/p2t-redesign/homepage-redesign/
 
