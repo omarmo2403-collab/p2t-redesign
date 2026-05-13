@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2026051455" />
+<link rel="stylesheet" href="styles.css?v=2026051470" />
 </head>
 <body>
 
@@ -296,13 +296,59 @@
             </label>
           </li>
         </ul>
-        <p class="cart-totals__note">Shipping options will be updated at checkout. <a href="#">Calculate shipping</a></p>
+        <p class="cart-totals__note">
+          Shipping options will be updated at checkout.
+          <button type="button" class="cart-totals__calc-toggle" aria-expanded="false" aria-controls="calc-shipping">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h11l2 4h5v6h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+            Calculate shipping
+          </button>
+        </p>
+
+        <div class="calc-shipping" id="calc-shipping" hidden>
+          <form class="calc-shipping__form" onsubmit="return false;">
+            <div class="calc-shipping__field">
+              <label for="ship-country">Country / region</label>
+              <div class="select">
+                <select id="ship-country" class="select__field">
+                  <option value="GB" selected>United Kingdom (UK)</option>
+                  <option value="IE">Ireland</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
+                  <option value="ES">Spain</option>
+                  <option value="IT">Italy</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="BE">Belgium</option>
+                </select>
+                <svg class="select__chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l5 5 5-5"/></svg>
+              </div>
+            </div>
+
+            <div class="calc-shipping__field">
+              <label for="ship-county">County <span class="calc-shipping__optional">(optional)</span></label>
+              <input type="text" id="ship-county" autocomplete="address-level1" />
+            </div>
+
+            <div class="calc-shipping__field">
+              <label for="ship-city">Town / City <span class="calc-shipping__required" aria-label="required">*</span></label>
+              <input type="text" id="ship-city" autocomplete="address-level2" required />
+            </div>
+
+            <div class="calc-shipping__field">
+              <label for="ship-postcode">Postcode <span class="calc-shipping__required" aria-label="required">*</span></label>
+              <input type="text" id="ship-postcode" autocomplete="postal-code" required />
+            </div>
+
+            <div class="calc-shipping__actions">
+              <button type="submit" class="btn btn--primary btn--small calc-shipping__submit">Update</button>
+            </div>
+          </form>
+        </div>
       </div>
 
       <div class="cart-totals__row cart-totals__row--grand">
         <span>Total</span>
         <span class="cart-totals__value">
-          <strong>&pound;25.34</strong>
+          <strong data-grand-total>&pound;25.34</strong>
           <em>includes &pound;4.22 tax</em>
         </span>
       </div>
@@ -323,6 +369,18 @@
 
   </div>
 </section>
+
+<!-- Sticky mobile checkout bar -->
+<aside class="cart-sticky-checkout" aria-label="Order summary">
+  <div class="cart-sticky-checkout__total">
+    <span class="cart-sticky-checkout__label">Total <em>(inc VAT)</em></span>
+    <span class="cart-sticky-checkout__amount" data-grand-total>&pound;25.34</span>
+  </div>
+  <a href="checkout.html" class="btn btn--primary cart-sticky-checkout__btn">
+    Checkout
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 6l6 6-6 6"/></svg>
+  </a>
+</aside>
 
 <!-- Trust band -->
 <section class="trust">
@@ -543,7 +601,29 @@
       if (e.key === 'Escape' && searchOverlay && !searchOverlay.hidden) closeSearch();
     });
 
-    // Qty steppers — update line subtotal live
+    // Calculate-shipping toggle
+    const calcToggle = document.querySelector('.cart-totals__calc-toggle');
+    const calcPanel = document.getElementById('calc-shipping');
+    if (calcToggle && calcPanel) {
+      calcToggle.addEventListener('click', () => {
+        const open = calcToggle.getAttribute('aria-expanded') === 'true';
+        calcToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+        calcPanel.hidden = open;
+      });
+    }
+
+    // Recalculate grand total from current line subtotals
+    function recalcGrandTotal() {
+      let sum = 0;
+      document.querySelectorAll('.cart-line__subtotal .cart-line__amount').forEach(el => {
+        sum += parseFloat(el.textContent.replace(/[^0-9.]/g, '')) || 0;
+      });
+      document.querySelectorAll('[data-grand-total]').forEach(el => {
+        el.textContent = '£' + sum.toFixed(2);
+      });
+    }
+
+    // Qty steppers — update line subtotal AND grand total live
     document.querySelectorAll('.cart-line').forEach(line => {
       const input = line.querySelector('.qty__input');
       const priceEl = line.querySelector('.cart-line__price .cart-line__amount');
@@ -554,6 +634,7 @@
         const q = Math.max(1, parseInt(input.value, 10) || 1);
         input.value = q;
         subEl.textContent = '£' + (unit * q).toFixed(2);
+        recalcGrandTotal();
       }
       line.querySelectorAll('.qty__btn').forEach(btn => {
         btn.addEventListener('click', () => {

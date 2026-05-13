@@ -3,11 +3,18 @@
 Thumbs.db
 desktop.ini
 
-# Editor
+# Editor / agent local config
 .vscode/
 .idea/
+.claude/
 *.swp
 *~
+
+# Local scratch / WIP (underscore prefix convention)
+homepage-redesign/assets/_*
+
+# Local backup files
+*.original.*
 
 # Python
 __pycache__/
