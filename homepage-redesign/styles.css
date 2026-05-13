@@ -204,6 +204,8 @@ h1 em, h2 em { font-style: normal; font-weight: inherit; color: inherit; }
   height: 76px;
   width: auto;
   display: block;
+  /* Hint the browser to use higher-quality downscaling for the high-res source */
+  image-rendering: -webkit-optimize-contrast;
 }
 .logo__img--footer {
   height: 92px;
@@ -222,6 +224,7 @@ h1 em, h2 em { font-style: normal; font-weight: inherit; color: inherit; }
   padding: 14px 22px;
   box-sizing: content-box;
   border-radius: 3px;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* Search */
