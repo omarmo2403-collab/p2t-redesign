@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shopping Cart &mdash; Perfect 2 Trade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2026051455" />
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="utility-bar">
+  <div class="container utility-bar__inner">
+    <span class="utility-bar__msg">Free UK delivery on orders over &pound;75</span>
+    <div class="utility-bar__contact">
+      <a href="tel:+442380980390">+44 2380 980 390</a>
+      <span class="sep">/</span>
+      <a href="mailto:websales@perfect2trade.uk">websales@perfect2trade.uk</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container header__inner">
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+    <button class="header__search-toggle" type="button" aria-label="Open search" aria-controls="search-overlay">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </button>
+    <a href="index.html" class="logo">
+      <img src="assets/p2logo.png" alt="Perfect 2 Trade" class="logo__img" />
+    </a>
+    <form class="search" role="search">
+      <input type="search" placeholder="Search products, brands and categories" aria-label="Search" />
+      <button type="submit" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+    </form>
+    <nav class="header__actions" aria-label="User">
+      <a href="account-login.html" class="icon-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        <span>Login</span>
+      </a>
+      <div class="cart-dock">
+        <a href="cart.html" class="icon-link icon-link--cart" aria-current="page">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          <em class="badge">4</em>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+    <button class="nav-close" type="button" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6 L18 18"/><path d="M18 6 L6 18"/></svg>
+    </button>
+    <div class="container primary-nav__inner">
+      <ul>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Garden &amp; Seasonal</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Homeware</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Paints &amp; Decorative</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Electricals</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Health &amp; Beauty</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Pet Care</a></li>
+        <li><a href="#">Contact us</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Page header -->
+<section class="cart-header">
+  <div class="container">
+    <span class="eyebrow">Your basket</span>
+    <h1 class="cart-header__title">Shopping cart</h1>
+    <ol class="checkout-steps" aria-label="Checkout progress">
+      <li class="checkout-steps__item is-current" aria-current="step">
+        <span class="checkout-steps__num">1</span>
+        <span class="checkout-steps__label">Cart</span>
+      </li>
+      <li class="checkout-steps__rule" aria-hidden="true"></li>
+      <li class="checkout-steps__item">
+        <span class="checkout-steps__num">2</span>
+        <span class="checkout-steps__label">Checkout details</span>
+      </li>
+      <li class="checkout-steps__rule" aria-hidden="true"></li>
+      <li class="checkout-steps__item">
+        <span class="checkout-steps__num">3</span>
+        <span class="checkout-steps__label">Order complete</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Cart main -->
+<section class="cart-page">
+  <div class="container cart-page__inner">
+
+    <!-- LEFT: Cart table -->
+    <div class="cart-page__main">
+      <table class="cart-table" aria-label="Items in basket">
+        <thead>
+          <tr>
+            <th scope="col" class="cart-table__col-product">Product</th>
+            <th scope="col" class="cart-table__col-price">Price</th>
+            <th scope="col" class="cart-table__col-qty">Quantity</th>
+            <th scope="col" class="cart-table__col-subtotal">Subtotal</th>
+            <th scope="col" class="cart-table__col-remove"><span class="sr-only">Remove</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cart-line">
+            <td class="cart-line__product" data-label="Product">
+              <a href="product-algon-cleaner.html" class="cart-line__img">
+                <img src="https://perfect2trade.uk/wp-content/uploads/2025/04/CarPlan-Blue-Star-Winter-De-Icer-Trigger-Spray-500ml.png" alt="" loading="lazy" />
+              </a>
+              <div class="cart-line__info">
+                <span class="eyebrow">CarPlan</span>
+                <a href="product-algon-cleaner.html" class="cart-line__name">CarPlan De Icer Trigger Spray 500ml</a>
+                <span class="cart-line__meta">In stock &middot; Ships in 24h</span>
+              </div>
+            </td>
+            <td class="cart-line__price" data-label="Price">
+              <span class="cart-line__amount">&pound;1.80</span>
+              <span class="cart-line__vat">(inc VAT)</span>
+            </td>
+            <td class="cart-line__qty" data-label="Quantity">
+              <div class="qty qty--compact">
+                <button type="button" class="qty__btn" aria-label="Decrease quantity" data-step="-1">&minus;</button>
+                <input type="number" class="qty__input" value="1" min="1" max="99" aria-label="Quantity" />
+                <button type="button" class="qty__btn" aria-label="Increase quantity" data-step="1">&plus;</button>
+              </div>
+            </td>
+            <td class="cart-line__subtotal" data-label="Subtotal">
+              <span class="cart-line__amount">&pound;1.80</span>
+              <span class="cart-line__vat">(inc VAT)</span>
+            </td>
+            <td class="cart-line__remove">
+              <button type="button" class="cart-line__remove-btn" aria-label="Remove CarPlan De Icer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6 L18 18"/><path d="M18 6 L6 18"/></svg>
+              </button>
+            </td>
+          </tr>
+          <tr class="cart-line">
+            <td class="cart-line__product" data-label="Product">
+              <a href="product-algon-cleaner.html" class="cart-line__img">
+                <img src="assets/p2logo.png" alt="" loading="lazy" />
+              </a>
+              <div class="cart-line__info">
+                <span class="eyebrow">Vitax</span>
+                <a href="product-algon-cleaner.html" class="cart-line__name">Vitax Winter Tree Wash 500ml</a>
+                <span class="cart-line__meta">In stock &middot; Ships in 24h</span>
+              </div>
+            </td>
+            <td class="cart-line__price" data-label="Price">
+              <span class="cart-line__amount">&pound;12.00</span>
+              <span class="cart-line__vat">(inc VAT)</span>
+            </td>
+            <td class="cart-line__qty" data-label="Quantity">
+              <div class="qty qty--compact">
+                <button type="button" class="qty__btn" aria-label="Decrease quantity" data-step="-1">&minus;</button>
+                <input type="number" class="qty__input" value="1" min="1" max="99" aria-label="Quantity" />
+                <button type="button" class="qty__btn" aria-label="Increase quantity" data-step="1">&plus;</button>
+              </div>
+            </td>
+            <td class="cart-line__subtotal" data-label="Subtotal">
+              <span class="cart-line__amount">&pound;12.00</span>
+              <span class="cart-line__vat">(inc VAT)</span>
+            </td>
+            <td class="cart-line__remove">
+              <button type="button" class="cart-line__remove-btn" aria-label="Remove Vitax Winter Tree Wash">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6 L18 18"/><path d="M18 6 L6 18"/></svg>
+              </button>
+            </td>
+          </tr>
+          <tr class="cart-line">
+            <td class="cart-line__product" data-label="Product">
+              <a href="product-algon-cleaner.html" class="cart-line__img">
+                <img src="https://perfect2trade.uk/wp-content/uploads/2025/04/Algon-Organic-Path-and-Patio-Cleaner-1.webp" alt="" loading="lazy" />
+              </a>
+              <div class="cart-line__info">
+                <span class="eyebrow">Algon</span>
+                <a href="product-algon-cleaner.html" class="cart-line__name">Algon Organic Path and Patio Cleaner 2.5L</a>
+                <span class="cart-line__meta">In stock &middot; Ships in 24h</span>
+              </div>
+            </td>
+            <td class="cart-line__price" data-label="Price">
+              <span class="cart-line__amount">&pound;5.77</span>
+              <span class="cart-line__vat">(inc VAT)</span>
+            </td>
+            <td class="cart-line__qty" data-label="Quantity">
+              <div class="qty qty--compact">
+                <button type="button" class="qty__btn" aria-label="Decrease quantity" data-step="-1">&minus;</button>
+                <input type="number" class="qty__input" value="2" min="1" max="99" aria-label="Quantity" />
+                <button type="button" class="qty__btn" aria-label="Increase quantity" data-step="1">&plus;</button>
+              </div>
+            </td>
+            <td class="cart-line__subtotal" data-label="Subtotal">
+              <span class="cart-line__amount">&pound;11.54</span>
+              <span class="cart-line__vat">(inc VAT)</span>
+            </td>
+            <td class="cart-line__remove">
+              <button type="button" class="cart-line__remove-btn" aria-label="Remove Algon Path and Patio Cleaner">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6 L18 18"/><path d="M18 6 L6 18"/></svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cart-actions">
+        <a href="category-garden-seasonal.html" class="btn btn--ghost cart-actions__continue">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M14 6l-6 6 6 6"/></svg>
+          <span>Continue shopping</span>
+        </a>
+        <button type="button" class="btn btn--primary cart-actions__update">Update cart</button>
+      </div>
+
+      <!-- Coupon (collapsible) -->
+      <details class="cart-coupon">
+        <summary>
+          <span class="cart-coupon__label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v5a2 2 0 0 1 0 4v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 1 0-4z"/><path d="M9 9v.01M9 15v.01M14 9l-4 6"/></svg>
+            Have a coupon? <em>Click to enter your code</em>
+          </span>
+          <span class="cart-coupon__chevron" aria-hidden="true">+</span>
+        </summary>
+        <div class="cart-coupon__body">
+          <input type="text" class="cart-coupon__input" placeholder="Enter coupon code" aria-label="Coupon code" />
+          <button type="button" class="btn btn--ghost btn--small">Apply</button>
+        </div>
+      </details>
+    </div>
+
+    <!-- RIGHT: Cart totals -->
+    <aside class="cart-totals" aria-label="Order summary">
+      <h2 class="cart-totals__title">Cart totals</h2>
+
+      <div class="cart-totals__row">
+        <span>Subtotal</span>
+        <span class="cart-totals__value">
+          <strong>&pound;25.34</strong>
+          <em>(incl. VAT)</em>
+        </span>
+      </div>
+
+      <div class="cart-totals__shipping">
+        <span class="cart-totals__shipping-label">Shipment</span>
+        <ul class="cart-shipping">
+          <li>
+            <label class="cart-shipping__option">
+              <input type="radio" name="shipping" value="standard" />
+              <span class="cart-shipping__radio" aria-hidden="true"></span>
+              <span class="cart-shipping__text">
+                <span class="cart-shipping__name">Standard delivery</span>
+                <span class="cart-shipping__price">&pound;3.98 <em>(incl. VAT)</em></span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="cart-shipping__option">
+              <input type="radio" name="shipping" value="next-day" />
+              <span class="cart-shipping__radio" aria-hidden="true"></span>
+              <span class="cart-shipping__text">
+                <span class="cart-shipping__name">Next day shipping</span>
+                <span class="cart-shipping__note">Orders placed after 12:00 pm on Thursday will be delivered the following Monday (excluding bank holidays).</span>
+                <span class="cart-shipping__price">&pound;6.98 <em>(incl. VAT)</em></span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="cart-shipping__option">
+              <input type="radio" name="shipping" value="saturday" />
+              <span class="cart-shipping__radio" aria-hidden="true"></span>
+              <span class="cart-shipping__text">
+                <span class="cart-shipping__name">Saturday delivery</span>
+                <span class="cart-shipping__price">&pound;30.00 <em>(incl. VAT)</em></span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="cart-shipping__option">
+              <input type="radio" name="shipping" value="collect" checked />
+              <span class="cart-shipping__radio" aria-hidden="true"></span>
+              <span class="cart-shipping__text">
+                <span class="cart-shipping__name">In-store collection</span>
+                <span class="cart-shipping__price">Free</span>
+              </span>
+            </label>
+          </li>
+        </ul>
+        <p class="cart-totals__note">Shipping options will be updated at checkout. <a href="#">Calculate shipping</a></p>
+      </div>
+
+      <div class="cart-totals__row cart-totals__row--grand">
+        <span>Total</span>
+        <span class="cart-totals__value">
+          <strong>&pound;25.34</strong>
+          <em>includes &pound;4.22 tax</em>
+        </span>
+      </div>
+
+      <a href="checkout.html" class="btn btn--primary cart-totals__cta">Proceed to checkout</a>
+
+      <ul class="cart-totals__perks">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Secure checkout via Cardstream</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 10a8 8 0 0 1 14-5l2 2"/><path d="M20 4v4h-4"/><path d="M20 14a8 8 0 0 1-14 5l-2-2"/><path d="M4 20v-4h4"/></svg>
+          <span>30-day no-fuss returns</span>
+        </li>
+      </ul>
+    </aside>
+
+  </div>
+</section>
+
+<!-- Trust band -->
+<section class="trust">
+  <div class="container">
+    <div class="trust__inner">
+      <div class="trust__item">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 7h11l2 4h5v6h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+        <div>
+          <strong>Express delivery</strong>
+          <span>Next-day &amp; Saturday shipping</span>
+        </div>
+      </div>
+      <div class="trust__item">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 10a8 8 0 0 1 14-5l2 2"/><path d="M20 4v4h-4"/><path d="M20 14a8 8 0 0 1-14 5l-2-2"/><path d="M4 20v-4h4"/></svg>
+        <div>
+          <strong>Easy returns</strong>
+          <span>Express shipping &amp; effortless returns</span>
+        </div>
+      </div>
+      <div class="trust__item">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div>
+          <strong>Secure payments</strong>
+          <span>Secure online payments with Cardstream</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__col footer__col--brand">
+      <a href="index.html" class="footer-logo" aria-label="Perfect 2 Trade">
+        <img src="assets/p2logo.png" alt="Perfect 2 Trade" class="footer-logo__img" />
+      </a>
+      <p>Trade quality essentials for the home, garden and workshop &mdash; sourced from the brands the trade trusts.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Customer services</h4>
+      <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Terms &amp; conditions</a></li>
+        <li><a href="#">Delivery information</a></li>
+        <li><a href="#">Returns policy</a></li>
+        <li><a href="#">Privacy policy</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Perfect 2 Trade</a></li>
+        <li><a href="#">Trade accounts</a></li>
+        <li><a href="#">Blog &amp; advice</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Get in touch</h4>
+      <ul class="footer__contact">
+        <li>+44 2380 980 390</li>
+        <li>+44 2080 952 222</li>
+        <li>websales@perfect2trade.uk</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__base">
+    <div class="container">
+      <span>&copy; 2026 Perfect 2 Trade. All rights reserved.</span>
+      <span>Company registration / VAT details</span>
+    </div>
+  </div>
+</footer>
+
+<div class="nav-backdrop" hidden></div>
+
+<!-- Mobile search overlay -->
+<div class="search-overlay" id="search-overlay" hidden aria-hidden="true" role="dialog" aria-label="Search">
+  <div class="search-overlay__bar">
+    <button class="search-overlay__back" type="button" aria-label="Close search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 6l-6 6 6 6"/></svg>
+    </button>
+    <form class="search-overlay__form" role="search">
+      <input type="search" class="search-overlay__input" placeholder="Search for products..." aria-label="Search products" autocomplete="off" />
+      <button type="button" class="search-overlay__clear" aria-label="Clear" hidden>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6 L18 18"/><path d="M18 6 L6 18"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <div class="search-overlay__body">
+    <section class="search-overlay__group">
+      <h3 class="search-overlay__heading">Popular searches</h3>
+      <ul class="search-chips">
+        <li><a href="category-garden-chemicals.html" class="search-chip">Patio cleaner</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">De-icer</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Algon</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Aftercut</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Slug repellent</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Path &amp; patio</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Lawn feed</a></li>
+      </ul>
+    </section>
+
+    <section class="search-overlay__group">
+      <h3 class="search-overlay__heading">Browse categories</h3>
+      <ul class="search-links">
+        <li><a href="category-garden-seasonal.html">Garden &amp; Seasonal</a></li>
+        <li><a href="category-garden-chemicals.html">Garden Chemicals &amp; Growing Media</a></li>
+        <li><a href="category-garden-seasonal.html">Homeware</a></li>
+        <li><a href="category-garden-seasonal.html">Paints &amp; Decorative</a></li>
+        <li><a href="category-garden-seasonal.html">Pet Care</a></li>
+        <li><a href="category-garden-seasonal.html">Health &amp; Beauty</a></li>
+      </ul>
+    </section>
+
+    <section class="search-overlay__group">
+      <h3 class="search-overlay__heading">Trending products</h3>
+      <ul class="search-products">
+        <li>
+          <a href="product-algon-cleaner.html">
+            <div class="search-product__img"><img src="https://perfect2trade.uk/wp-content/uploads/2025/04/Algon-Organic-Path-and-Patio-Cleaner-1.webp" alt="" loading="lazy" /></div>
+            <div class="search-product__info">
+              <span class="eyebrow">Algon</span>
+              <span class="search-product__name">Algon Organic Path and Patio Cleaner 2.5L</span>
+              <span class="search-product__price">&pound;5.77 <em>(inc VAT)</em></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="product-algon-cleaner.html">
+            <div class="search-product__img"><img src="https://perfect2trade.uk/wp-content/uploads/2025/04/CarPlan-Blue-Star-Winter-De-Icer-Trigger-Spray-500ml.png" alt="" loading="lazy" /></div>
+            <div class="search-product__info">
+              <span class="eyebrow">CarPlan</span>
+              <span class="search-product__name">CarPlan De Icer Trigger Spray 500ml</span>
+              <span class="search-product__price">&pound;1.80 <em>(inc VAT)</em></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="product-algon-cleaner.html">
+            <div class="search-product__img"><img src="https://perfect2trade.uk/wp-content/uploads/2025/04/20500137-600x600-1.jpg" alt="" loading="lazy" /></div>
+            <div class="search-product__info">
+              <span class="eyebrow">Westland</span>
+              <span class="search-product__name">Aftercut Patch Fix Total Lawn Repair, 2.4 Kg</span>
+              <span class="search-product__price">&pound;9.12 <em>(inc VAT)</em></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="product-algon-cleaner.html">
+            <div class="search-product__img"><img src="https://perfect2trade.uk/wp-content/uploads/2025/04/703108-600x600-1.jpg" alt="" loading="lazy" /></div>
+            <div class="search-product__info">
+              <span class="eyebrow">Agralan</span>
+              <span class="search-product__name">Agralan Copper Slug Tape</span>
+              <span class="search-product__price">&pound;3.00 <em>(inc VAT)</em></span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<script>
+  (function () {
+    // Mobile drawer
+    const toggle = document.querySelector('.nav-toggle');
+    const close = document.querySelector('.nav-close');
+    const nav = document.getElementById('primary-nav');
+    const backdrop = document.querySelector('.nav-backdrop');
+    const body = document.body;
+    function setMenu(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      body.classList.toggle('menu-open', open);
+      backdrop.hidden = !open;
+    }
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+      if (close) close.addEventListener('click', () => setMenu(false));
+      backdrop.addEventListener('click', () => setMenu(false));
+    }
+
+    // Mobile search overlay
+    const searchToggle = document.querySelector('.header__search-toggle');
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchBack = searchOverlay?.querySelector('.search-overlay__back');
+    const overlayInput = searchOverlay?.querySelector('.search-overlay__input');
+    const overlayClear = searchOverlay?.querySelector('.search-overlay__clear');
+    function openSearch() {
+      if (!searchOverlay) return;
+      searchOverlay.hidden = false;
+      searchOverlay.setAttribute('aria-hidden', 'false');
+      body.classList.add('search-open');
+      setTimeout(() => overlayInput?.focus(), 60);
+    }
+    function closeSearch() {
+      if (!searchOverlay) return;
+      searchOverlay.hidden = true;
+      searchOverlay.setAttribute('aria-hidden', 'true');
+      body.classList.remove('search-open');
+      if (overlayInput) overlayInput.value = '';
+      if (overlayClear) overlayClear.hidden = true;
+    }
+    if (searchToggle) searchToggle.addEventListener('click', openSearch);
+    if (searchBack) searchBack.addEventListener('click', closeSearch);
+    if (overlayInput && overlayClear) {
+      overlayInput.addEventListener('input', () => {
+        overlayClear.hidden = overlayInput.value.length === 0;
+      });
+      overlayClear.addEventListener('click', () => {
+        overlayInput.value = '';
+        overlayClear.hidden = true;
+        overlayInput.focus();
+      });
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && searchOverlay && !searchOverlay.hidden) closeSearch();
+    });
+
+    // Qty steppers — update line subtotal live
+    document.querySelectorAll('.cart-line').forEach(line => {
+      const input = line.querySelector('.qty__input');
+      const priceEl = line.querySelector('.cart-line__price .cart-line__amount');
+      const subEl = line.querySelector('.cart-line__subtotal .cart-line__amount');
+      if (!input || !priceEl || !subEl) return;
+      const unit = parseFloat(priceEl.textContent.replace(/[^0-9.]/g, ''));
+      function refresh() {
+        const q = Math.max(1, parseInt(input.value, 10) || 1);
+        input.value = q;
+        subEl.textContent = '£' + (unit * q).toFixed(2);
+      }
+      line.querySelectorAll('.qty__btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const step = parseInt(btn.dataset.step, 10);
+          input.value = Math.max(1, (parseInt(input.value, 10) || 1) + step);
+          refresh();
+        });
+      });
+      input.addEventListener('change', refresh);
+    });
+  })();
+</script>
+
+</body>
+</html>

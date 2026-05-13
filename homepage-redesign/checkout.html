@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checkout &mdash; Perfect 2 Trade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2026051455" />
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="utility-bar">
+  <div class="container utility-bar__inner">
+    <span class="utility-bar__msg">Free UK delivery on orders over &pound;75</span>
+    <div class="utility-bar__contact">
+      <a href="tel:+442380980390">+44 2380 980 390</a>
+      <span class="sep">/</span>
+      <a href="mailto:websales@perfect2trade.uk">websales@perfect2trade.uk</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container header__inner">
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+    <button class="header__search-toggle" type="button" aria-label="Open search" aria-controls="search-overlay">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </button>
+    <a href="index.html" class="logo">
+      <img src="assets/p2logo.png" alt="Perfect 2 Trade" class="logo__img" />
+    </a>
+    <form class="search" role="search">
+      <input type="search" placeholder="Search products, brands and categories" aria-label="Search" />
+      <button type="submit" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+    </form>
+    <nav class="header__actions" aria-label="User">
+      <a href="account-login.html" class="icon-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        <span>Login</span>
+      </a>
+      <div class="cart-dock">
+        <a href="cart.html" class="icon-link icon-link--cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          <em class="badge">3</em>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+    <button class="nav-close" type="button" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6 L18 18"/><path d="M18 6 L6 18"/></svg>
+    </button>
+    <div class="container primary-nav__inner">
+      <ul>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Garden &amp; Seasonal</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Homeware</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Paints &amp; Decorative</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Electricals</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Health &amp; Beauty</a></li>
+        <li class="has-mega"><a href="category-garden-seasonal.html">Pet Care</a></li>
+        <li><a href="#">Contact us</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Page header -->
+<section class="cart-header">
+  <div class="container">
+    <span class="eyebrow">Secure checkout</span>
+    <h1 class="cart-header__title">Checkout</h1>
+    <ol class="checkout-steps" aria-label="Checkout progress">
+      <li class="checkout-steps__item">
+        <span class="checkout-steps__num">1</span>
+        <span class="checkout-steps__label">Cart</span>
+      </li>
+      <li class="checkout-steps__rule" aria-hidden="true"></li>
+      <li class="checkout-steps__item is-current" aria-current="step">
+        <span class="checkout-steps__num">2</span>
+        <span class="checkout-steps__label">Checkout details</span>
+      </li>
+      <li class="checkout-steps__rule" aria-hidden="true"></li>
+      <li class="checkout-steps__item">
+        <span class="checkout-steps__num">3</span>
+        <span class="checkout-steps__label">Order complete</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Checkout -->
+<section class="checkout-page">
+  <div class="container checkout-page__inner">
+
+    <!-- LEFT: form -->
+    <form class="checkout-form" onsubmit="return false;" novalidate>
+
+      <p class="checkout-returning">
+        Returning customer? <a href="account-login.html">Click here to login</a>
+      </p>
+
+      <!-- Contact -->
+      <section class="checkout-section" aria-labelledby="sect-contact">
+        <header class="checkout-section__head">
+          <span class="checkout-section__num">01</span>
+          <h2 id="sect-contact">Contact information</h2>
+        </header>
+        <div class="checkout-section__body">
+          <div class="field">
+            <label class="field__label" for="ck-email">Email <span class="req">*</span></label>
+            <input type="email" id="ck-email" class="field__input" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <label class="checkout-check">
+            <input type="checkbox" />
+            <span class="checkout-check__box" aria-hidden="true"></span>
+            <span class="checkout-check__text">Create an account for faster checkout next time</span>
+          </label>
+          <div class="checkout-row checkout-row--phone">
+            <div class="field field--dial">
+              <label class="field__label" for="ck-dial">Code</label>
+              <div class="select select--compact">
+                <select id="ck-dial" class="select__field" aria-label="Country code">
+                  <option value="+44" selected>&#127468;&#127463; +44</option>
+                  <option value="+353">&#127470;&#127466; +353</option>
+                  <option value="+1">&#127482;&#127480; +1</option>
+                </select>
+                <svg class="select__chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l5 5 5-5"/></svg>
+              </div>
+            </div>
+            <div class="field field--phone">
+              <label class="field__label" for="ck-phone">Phone <span class="req">*</span></label>
+              <input type="tel" id="ck-phone" class="field__input" placeholder="07000 000000" autocomplete="tel" required />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shipping address -->
+      <section class="checkout-section" aria-labelledby="sect-ship">
+        <header class="checkout-section__head">
+          <span class="checkout-section__num">02</span>
+          <h2 id="sect-ship">Shipping address</h2>
+        </header>
+        <div class="checkout-section__body">
+          <div class="checkout-row">
+            <div class="field">
+              <label class="field__label" for="ck-first">First name <span class="req">*</span></label>
+              <input type="text" id="ck-first" class="field__input" autocomplete="given-name" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="ck-last">Last name <span class="req">*</span></label>
+              <input type="text" id="ck-last" class="field__input" autocomplete="family-name" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="ck-country">Country <span class="req">*</span></label>
+            <div class="select">
+              <select id="ck-country" class="select__field" required>
+                <option value="GB" selected>United Kingdom (UK)</option>
+                <option value="IE">Ireland</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+              </select>
+              <svg class="select__chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l5 5 5-5"/></svg>
+            </div>
+          </div>
+
+          <div class="checkout-row checkout-row--postcode">
+            <div class="field">
+              <label class="field__label" for="ck-postcode">Postcode <span class="req">*</span></label>
+              <input type="text" id="ck-postcode" class="field__input" autocomplete="postal-code" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="ck-street">Street address <span class="req">*</span></label>
+              <input type="text" id="ck-street" class="field__input" autocomplete="address-line1" required />
+            </div>
+          </div>
+
+          <details class="checkout-toggle">
+            <summary>
+              <span class="checkout-toggle__plus" aria-hidden="true">+</span>
+              <span>Add apartment, suite, unit, etc.</span>
+            </summary>
+            <div class="field">
+              <label class="field__label" for="ck-apt">Apartment, suite, unit, etc.</label>
+              <input type="text" id="ck-apt" class="field__input" autocomplete="address-line2" />
+            </div>
+          </details>
+
+          <div class="checkout-row">
+            <div class="field">
+              <label class="field__label" for="ck-city">Town / city <span class="req">*</span></label>
+              <input type="text" id="ck-city" class="field__input" autocomplete="address-level2" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="ck-county">County</label>
+              <input type="text" id="ck-county" class="field__input" autocomplete="address-level1" />
+            </div>
+          </div>
+
+          <label class="checkout-check">
+            <input type="checkbox" />
+            <span class="checkout-check__box" aria-hidden="true"></span>
+            <span class="checkout-check__text">Use a different billing address (optional)</span>
+          </label>
+
+          <div class="field">
+            <label class="field__label" for="ck-notes">Order notes (optional)</label>
+            <textarea id="ck-notes" class="field__input field__input--textarea" rows="4" placeholder="Notes about your order, e.g. delivery instructions."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shipping method -->
+      <section class="checkout-section" aria-labelledby="sect-method">
+        <header class="checkout-section__head">
+          <span class="checkout-section__num">03</span>
+          <h2 id="sect-method">Shipping method</h2>
+        </header>
+        <div class="checkout-section__body">
+          <ul class="checkout-options" role="radiogroup" aria-label="Shipping method">
+            <li>
+              <label class="checkout-option">
+                <input type="radio" name="ship-method" value="standard" />
+                <span class="checkout-option__radio" aria-hidden="true"></span>
+                <span class="checkout-option__main">
+                  <span class="checkout-option__title">Standard delivery</span>
+                </span>
+                <span class="checkout-option__price">&pound;3.98 <em>(incl. VAT)</em></span>
+              </label>
+            </li>
+            <li>
+              <label class="checkout-option">
+                <input type="radio" name="ship-method" value="next-day" />
+                <span class="checkout-option__radio" aria-hidden="true"></span>
+                <span class="checkout-option__main">
+                  <span class="checkout-option__title">Next day shipping</span>
+                  <span class="checkout-option__note">Orders placed after 12:00 pm on Thursday will be delivered the following Monday, except on bank holidays.</span>
+                </span>
+                <span class="checkout-option__price">&pound;6.98 <em>(incl. VAT)</em></span>
+              </label>
+            </li>
+            <li>
+              <label class="checkout-option">
+                <input type="radio" name="ship-method" value="saturday" />
+                <span class="checkout-option__radio" aria-hidden="true"></span>
+                <span class="checkout-option__main">
+                  <span class="checkout-option__title">Saturday delivery</span>
+                </span>
+                <span class="checkout-option__price">&pound;30.00 <em>(incl. VAT)</em></span>
+              </label>
+            </li>
+            <li>
+              <label class="checkout-option">
+                <input type="radio" name="ship-method" value="collect" checked />
+                <span class="checkout-option__radio" aria-hidden="true"></span>
+                <span class="checkout-option__main">
+                  <span class="checkout-option__title">In-store collection</span>
+                </span>
+                <span class="checkout-option__price">Free</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Payment -->
+      <section class="checkout-section" aria-labelledby="sect-pay">
+        <header class="checkout-section__head">
+          <span class="checkout-section__num">04</span>
+          <h2 id="sect-pay">Payment information</h2>
+        </header>
+        <div class="checkout-section__body">
+
+          <div class="checkout-paymentbar">
+            <span>Credit / debit card or Pay Later. Get <strong>2% back</strong>.</span>
+            <ul class="checkout-paymentbar__brands" aria-label="Accepted payment methods">
+              <li class="pay-brand pay-brand--visa">VISA</li>
+              <li class="pay-brand pay-brand--mc"><span></span><span></span></li>
+              <li class="pay-brand pay-brand--apple">&#63743;Pay</li>
+              <li class="pay-brand pay-brand--super">super.</li>
+            </ul>
+          </div>
+
+          <div class="checkout-reward">
+            <div class="checkout-reward__head">
+              <strong>Get 2% Back</strong>
+              <span>Sign up or log in</span>
+            </div>
+            <input type="tel" class="field__input checkout-reward__input" placeholder="Mobile number" aria-label="Mobile number" />
+          </div>
+
+          <div class="checkout-paygroup">
+            <h3 class="checkout-paygroup__title">Pay later with Super</h3>
+            <ul class="checkout-options">
+              <li>
+                <label class="checkout-option">
+                  <input type="radio" name="payment" value="pay-later" />
+                  <span class="checkout-option__radio" aria-hidden="true"></span>
+                  <span class="checkout-option__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+                  </span>
+                  <span class="checkout-option__main">
+                    <span class="checkout-option__title">Pay later</span>
+                    <span class="checkout-option__note">Spread the cost up to 24 months</span>
+                  </span>
+                  <span class="checkout-option__badge">Pay &pound;0 today</span>
+                </label>
+              </li>
+              <li>
+                <label class="checkout-option">
+                  <input type="radio" name="payment" value="pay-3" />
+                  <span class="checkout-option__radio" aria-hidden="true"></span>
+                  <span class="checkout-option__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+                  </span>
+                  <span class="checkout-option__main">
+                    <span class="checkout-option__title">Pay in 3</span>
+                    <span class="checkout-option__note">3 interest-free payments of &pound;8.45</span>
+                  </span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="checkout-paygroup">
+            <h3 class="checkout-paygroup__title">Pay &pound;25.34 now <span class="checkout-paygroup__sub">(full amount)</span></h3>
+            <ul class="checkout-options">
+              <li>
+                <label class="checkout-option">
+                  <input type="radio" name="payment" value="card" checked />
+                  <span class="checkout-option__radio" aria-hidden="true"></span>
+                  <span class="checkout-option__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>
+                  </span>
+                  <span class="checkout-option__main">
+                    <span class="checkout-option__title">Card</span>
+                    <span class="checkout-option__note">Visa, Mastercard, Amex &mdash; processed securely by Cardstream</span>
+                  </span>
+                </label>
+              </li>
+              <li>
+                <label class="checkout-option">
+                  <input type="radio" name="payment" value="bank" />
+                  <span class="checkout-option__radio" aria-hidden="true"></span>
+                  <span class="checkout-option__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 10h18M5 10l7-5 7 5M5 10v9M19 10v9M9 13v6M15 13v6M3 21h18"/></svg>
+                  </span>
+                  <span class="checkout-option__main">
+                    <span class="checkout-option__title">Bank app</span>
+                    <span class="checkout-option__note">Pay directly from your banking app</span>
+                  </span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Place order -->
+      <div class="checkout-place">
+        <button type="submit" class="btn btn--primary checkout-place__btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+          Place order &mdash; &pound;25.34
+        </button>
+        <p class="checkout-place__legal">
+          Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="#">privacy policy</a>.
+        </p>
+        <label class="checkout-check">
+          <input type="checkbox" required />
+          <span class="checkout-check__box" aria-hidden="true"></span>
+          <span class="checkout-check__text">I have read and agree to the website <a href="#">terms and conditions</a> <span class="req">*</span></span>
+        </label>
+      </div>
+    </form>
+
+    <!-- RIGHT: order summary -->
+    <aside class="checkout-aside" aria-label="Order summary">
+      <button type="button" class="checkout-aside__toggle" aria-expanded="false" aria-controls="checkout-summary-content">
+        <span class="checkout-aside__toggle-info">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          <span class="checkout-aside__toggle-label" data-show>Show order summary</span>
+          <span class="checkout-aside__toggle-label" data-hide>Hide order summary</span>
+          <svg class="checkout-aside__toggle-chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l5 5 5-5"/></svg>
+        </span>
+        <span class="checkout-aside__toggle-price">&pound;25.34</span>
+      </button>
+      <div class="checkout-aside__sticky" id="checkout-summary-content">
+        <h2 class="checkout-aside__title">Order summary</h2>
+
+        <ul class="checkout-lines">
+          <li class="checkout-line">
+            <div class="checkout-line__img">
+              <img src="https://perfect2trade.uk/wp-content/uploads/2025/04/CarPlan-Blue-Star-Winter-De-Icer-Trigger-Spray-500ml.png" alt="" loading="lazy" />
+              <span class="checkout-line__qty">1</span>
+            </div>
+            <div class="checkout-line__body">
+              <span class="eyebrow">CarPlan</span>
+              <h3>CarPlan De Icer Trigger Spray 500ml</h3>
+            </div>
+            <div class="checkout-line__price">
+              <span>&pound;1.80</span>
+              <em>(incl. VAT)</em>
+            </div>
+          </li>
+          <li class="checkout-line">
+            <div class="checkout-line__img">
+              <img src="assets/p2logo.png" alt="" loading="lazy" />
+              <span class="checkout-line__qty">1</span>
+            </div>
+            <div class="checkout-line__body">
+              <span class="eyebrow">Vitax</span>
+              <h3>Vitax Winter Tree Wash 500ml</h3>
+            </div>
+            <div class="checkout-line__price">
+              <span>&pound;12.00</span>
+              <em>(incl. VAT)</em>
+            </div>
+          </li>
+          <li class="checkout-line">
+            <div class="checkout-line__img">
+              <img src="https://perfect2trade.uk/wp-content/uploads/2025/04/Algon-Organic-Path-and-Patio-Cleaner-1.webp" alt="" loading="lazy" />
+              <span class="checkout-line__qty">2</span>
+            </div>
+            <div class="checkout-line__body">
+              <span class="eyebrow">Algon</span>
+              <h3>Algon Organic Path and Patio Cleaner 2.5L</h3>
+            </div>
+            <div class="checkout-line__price">
+              <span>&pound;11.54</span>
+              <em>(incl. VAT)</em>
+            </div>
+          </li>
+        </ul>
+
+        <div class="checkout-coupon">
+          <input type="text" class="field__input checkout-coupon__input" placeholder="Coupon code" aria-label="Coupon code" />
+          <button type="button" class="btn btn--ghost checkout-coupon__apply">Apply</button>
+        </div>
+
+        <dl class="checkout-totals">
+          <div class="checkout-totals__row">
+            <dt>Subtotal</dt>
+            <dd>&pound;25.34 <em>(incl. VAT)</em></dd>
+          </div>
+          <div class="checkout-totals__row">
+            <dt>Shipping</dt>
+            <dd>Free</dd>
+          </div>
+          <div class="checkout-totals__row checkout-totals__row--grand">
+            <dt>Total</dt>
+            <dd>
+              <strong>&pound;25.34</strong>
+              <em>Includes &pound;4.22 tax</em>
+            </dd>
+          </div>
+        </dl>
+
+        <ul class="checkout-aside__perks">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>Secure checkout via Cardstream</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 10a8 8 0 0 1 14-5l2 2"/><path d="M20 4v4h-4"/><path d="M20 14a8 8 0 0 1-14 5l-2-2"/><path d="M4 20v-4h4"/></svg>
+            <span>30-day no-fuss returns</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__col footer__col--brand">
+      <a href="index.html" class="footer-logo" aria-label="Perfect 2 Trade">
+        <img src="assets/p2logo.png" alt="Perfect 2 Trade" class="footer-logo__img" />
+      </a>
+      <p>Trade quality essentials for the home, garden and workshop &mdash; sourced from the brands the trade trusts.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Customer services</h4>
+      <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Terms &amp; conditions</a></li>
+        <li><a href="#">Delivery information</a></li>
+        <li><a href="#">Returns policy</a></li>
+        <li><a href="#">Privacy policy</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Perfect 2 Trade</a></li>
+        <li><a href="#">Trade accounts</a></li>
+        <li><a href="#">Blog &amp; advice</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Get in touch</h4>
+      <ul class="footer__contact">
+        <li>+44 2380 980 390</li>
+        <li>+44 2080 952 222</li>
+        <li>websales@perfect2trade.uk</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__base">
+    <div class="container">
+      <span>&copy; 2026 Perfect 2 Trade. All rights reserved.</span>
+      <span>Company registration / VAT details</span>
+    </div>
+  </div>
+</footer>
+
+<div class="nav-backdrop" hidden></div>
+
+<!-- Mobile search overlay -->
+<div class="search-overlay" id="search-overlay" hidden aria-hidden="true" role="dialog" aria-label="Search">
+  <div class="search-overlay__bar">
+    <button class="search-overlay__back" type="button" aria-label="Close search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 6l-6 6 6 6"/></svg>
+    </button>
+    <form class="search-overlay__form" role="search">
+      <input type="search" class="search-overlay__input" placeholder="Search for products..." aria-label="Search products" autocomplete="off" />
+      <button type="button" class="search-overlay__clear" aria-label="Clear" hidden>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6 L18 18"/><path d="M18 6 L6 18"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <div class="search-overlay__body">
+    <section class="search-overlay__group">
+      <h3 class="search-overlay__heading">Popular searches</h3>
+      <ul class="search-chips">
+        <li><a href="category-garden-chemicals.html" class="search-chip">Patio cleaner</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">De-icer</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Algon</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Aftercut</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Slug repellent</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Path &amp; patio</a></li>
+        <li><a href="category-garden-chemicals.html" class="search-chip">Lawn feed</a></li>
+      </ul>
+    </section>
+
+    <section class="search-overlay__group">
+      <h3 class="search-overlay__heading">Browse categories</h3>
+      <ul class="search-links">
+        <li><a href="category-garden-seasonal.html">Garden &amp; Seasonal</a></li>
+        <li><a href="category-garden-chemicals.html">Garden Chemicals &amp; Growing Media</a></li>
+        <li><a href="category-garden-seasonal.html">Homeware</a></li>
+        <li><a href="category-garden-seasonal.html">Paints &amp; Decorative</a></li>
+        <li><a href="category-garden-seasonal.html">Pet Care</a></li>
+        <li><a href="category-garden-seasonal.html">Health &amp; Beauty</a></li>
+      </ul>
+    </section>
+
+    <section class="search-overlay__group">
+      <h3 class="search-overlay__heading">Trending products</h3>
+      <ul class="search-products">
+        <li>
+          <a href="product-algon-cleaner.html">
+            <div class="search-product__img"><img src="https://perfect2trade.uk/wp-content/uploads/2025/04/Algon-Organic-Path-and-Patio-Cleaner-1.webp" alt="" loading="lazy" /></div>
+            <div class="search-product__info">
+              <span class="eyebrow">Algon</span>
+              <span class="search-product__name">Algon Organic Path and Patio Cleaner 2.5L</span>
+              <span class="search-product__price">&pound;5.77 <em>(inc VAT)</em></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="product-algon-cleaner.html">
+            <div class="search-product__img"><img src="https://perfect2trade.uk/wp-content/uploads/2025/04/CarPlan-Blue-Star-Winter-De-Icer-Trigger-Spray-500ml.png" alt="" loading="lazy" /></div>
+            <div class="search-product__info">
+              <span class="eyebrow">CarPlan</span>
+              <span class="search-product__name">CarPlan De Icer Trigger Spray 500ml</span>
+              <span class="search-product__price">&pound;1.80 <em>(inc VAT)</em></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="product-algon-cleaner.html">
+            <div class="search-product__img"><img src="https://perfect2trade.uk/wp-content/uploads/2025/04/20500137-600x600-1.jpg" alt="" loading="lazy" /></div>
+            <div class="search-product__info">
+              <span class="eyebrow">Westland</span>
+              <span class="search-product__name">Aftercut Patch Fix Total Lawn Repair, 2.4 Kg</span>
+              <span class="search-product__price">&pound;9.12 <em>(inc VAT)</em></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="product-algon-cleaner.html">
+            <div class="search-product__img"><img src="https://perfect2trade.uk/wp-content/uploads/2025/04/703108-600x600-1.jpg" alt="" loading="lazy" /></div>
+            <div class="search-product__info">
+              <span class="eyebrow">Agralan</span>
+              <span class="search-product__name">Agralan Copper Slug Tape</span>
+              <span class="search-product__price">&pound;3.00 <em>(inc VAT)</em></span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const searchToggle = document.querySelector('.header__search-toggle');
+    const searchOverlay = document.getElementById('search-overlay');
+    if (!searchToggle || !searchOverlay) return;
+    const searchBack = searchOverlay.querySelector('.search-overlay__back');
+    const overlayInput = searchOverlay.querySelector('.search-overlay__input');
+    const overlayClear = searchOverlay.querySelector('.search-overlay__clear');
+    function openSearch() {
+      searchOverlay.hidden = false;
+      searchOverlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('search-open');
+      setTimeout(function () { if (overlayInput) overlayInput.focus(); }, 60);
+    }
+    function closeSearch() {
+      searchOverlay.hidden = true;
+      searchOverlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('search-open');
+      if (overlayInput) overlayInput.value = '';
+      if (overlayClear) overlayClear.hidden = true;
+    }
+    searchToggle.addEventListener('click', openSearch);
+    if (searchBack) searchBack.addEventListener('click', closeSearch);
+    if (overlayInput && overlayClear) {
+      overlayInput.addEventListener('input', function () { overlayClear.hidden = overlayInput.value.length === 0; });
+      overlayClear.addEventListener('click', function () { overlayInput.value = ''; overlayClear.hidden = true; overlayInput.focus(); });
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !searchOverlay.hidden) closeSearch();
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    const toggle = document.querySelector('.nav-toggle');
+    const close = document.querySelector('.nav-close');
+    const nav = document.getElementById('primary-nav');
+    const backdrop = document.querySelector('.nav-backdrop');
+    const body = document.body;
+    function setMenu(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      body.classList.toggle('menu-open', open);
+      backdrop.hidden = !open;
+    }
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+      if (close) close.addEventListener('click', () => setMenu(false));
+      backdrop.addEventListener('click', () => setMenu(false));
+    }
+
+    // Mobile order-summary toggle
+    const summaryToggle = document.querySelector('.checkout-aside__toggle');
+    if (summaryToggle) {
+      summaryToggle.addEventListener('click', () => {
+        const open = summaryToggle.getAttribute('aria-expanded') === 'true';
+        summaryToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
