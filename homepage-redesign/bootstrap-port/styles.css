@@ -1,6 +1,6 @@
 /* ============================================================
    Perfect 2 Trade — homepage redesign
-   Typography & spacing inspired by coxandcox.co.uk
+   Typography & spacing inspired by editorial-led homewares brands
    ============================================================ */
 
 :root {
@@ -31,11 +31,11 @@
 html, body {
   margin: 0;
   background: var(--paper);
-  color: #444;                 /* Cox & Cox body colour — medium charcoal */
+  color: #444;                 /* body colour — medium charcoal */
   font-family: var(--sans);
   font-weight: 400;
-  font-size: 16px;             /* Cox & Cox body size */
-  line-height: 1.43;           /* Cox & Cox line-height — 22.86 / 16 */
+  font-size: 16px;             /* body size */
+  line-height: 1.43;           /* line-height — 22.86 / 16 */
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -54,7 +54,7 @@ a { color: inherit; text-decoration: none; }
   padding-right: var(--gutter);
 }
 
-/* Typographic primitives — Cox & Cox dual-font system:
+/* Typographic primitives — dual-font system:
    - Display headings (H1, H2) use the serif (Baskerville role)
    - Utility headings (H3, H4, H5) and everything else use the sans (Gill Sans role)
    - Letter-spacing is mostly normal; only labels/eyebrows/buttons get tracking
@@ -127,7 +127,7 @@ h1 em, h2 em { font-style: normal; font-weight: inherit; color: inherit; }
   margin-right: auto;
 }
 
-/* Buttons — Cox & Cox-style: UPPERCASE sans, weight 600, modest tracking */
+/* Buttons — UPPERCASE sans, weight 600, modest tracking */
 .btn {
   display: inline-block;
   padding: 16px 32px;
@@ -1063,7 +1063,7 @@ body.menu-open { overflow: hidden; }
 
 /* Tablet ---------------------------------------------------------------- */
 @media (max-width: 768px) {
-  /* Cox & Cox-style single-row header: burger + search-icon | logo (centred) | icons */
+  /* Mobile single-row header: burger + search-icon | logo (centred) | icons */
   .header__inner {
     grid-template-columns: auto auto 1fr auto;
     grid-template-areas: "burger searchbtn logo actions";
@@ -2424,7 +2424,7 @@ body.menu-open { overflow: hidden; }
   margin-bottom: 8px;
 }
 
-/* Reusable select component (Cox & Cox-style: hairline, sans, chevron) */
+/* Reusable select component — hairline, sans, chevron */
 .select {
   position: relative;
   display: block;

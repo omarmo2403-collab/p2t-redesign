@@ -2,7 +2,7 @@
 
 This document captures the design language, tokens, and patterns established during the homepage redesign. **Every new page or component should follow these principles** to keep the brand experience consistent.
 
-The aesthetic direction is inspired by **Cox & Cox** — editorial, refined, warm-neutral palette, serif headings paired with a clean sans, generous whitespace, and high-quality photography. The execution stays grounded in the **Perfect 2 Trade** logo (navy + coral badge).
+The aesthetic direction is inspired by editorial-led homewares brands — editorial, refined, warm-neutral palette, serif headings paired with a clean sans, generous whitespace, and high-quality photography. The execution stays grounded in the **Perfect 2 Trade** logo (navy + coral badge).
 
 ---
 
@@ -39,19 +39,19 @@ All colours live as CSS custom properties in `:root`. Do not hardcode hex values
 
 ---
 
-## 3. Typography — Cox & Cox dual-font system
+## 3. Typography — dual-font system
 
-**Audited from coxandcox.co.uk live elements.** Cox uses two typefaces and assigns them by *role*, not by tag:
+Two typefaces, assigned by *role* not by tag:
 
-- **Serif** (Cox uses Baskerville URW, we use **Cormorant Garamond**) — display only: H1 and the big editorial H2. Weight 400. Subtle 0.005–0.022em tracking. NO italic. NO accent colour on emphasis. NEVER on tile labels, prices, body, or anything inside a grid/list.
-- **Sans** (Cox uses Gill Sans Nova, we use **Jost**) — everything else: H3+, body, navigation, buttons, product names, prices, footer, eyebrows. Weights 400 / 500 / 600. Mostly normal letter-spacing.
+- **Serif** (**Cormorant Garamond**, Baskerville-class) — display only: H1 and the big editorial H2. Weight 400. Subtle 0.005–0.022em tracking. NO italic. NO accent colour on emphasis. NEVER on tile labels, prices, body, or anything inside a grid/list.
+- **Sans** (**Jost**, Gill-Sans-class) — everything else: H3+, body, navigation, buttons, product names, prices, footer, eyebrows. Weights 400 / 500 / 600. Mostly normal letter-spacing.
 
 | Token | Family | Use |
 |---|---|---|
 | `--serif` | Cormorant Garamond (400, 500, 600) | H1 / H2 display only |
 | `--sans`  | Jost (400, 500, 600) | Body, H3+, nav, buttons, product cards, eyebrows, footer |
 
-### Type scale (matching Cox & Cox specs)
+### Type scale
 
 | Element | Family | Size | Weight | Tracking | Transform |
 |---|---|---|---|---|---|
@@ -71,11 +71,11 @@ All colours live as CSS custom properties in `:root`. Do not hardcode hex values
 
 ### Body colour
 
-Cox & Cox uses **#444** (`rgb(68,68,68)`) — a medium charcoal — for almost all text. Contrast comes from font *weight*, not colour darkness. We follow the same: body, headings, nav, footer all sit at `#444`. The `--ink` token (`#1f2622`) is reserved for the darkest UI surfaces (utility bar, hamburger bars, dark button backgrounds).
+The body colour is **#444** (`rgb(68,68,68)`) — a medium charcoal — used for almost all text. Contrast comes from font *weight*, not colour darkness; body, headings, nav, footer all sit at `#444`. The `--ink` token (`#1f2622`) is reserved for the darkest UI surfaces (utility bar, hamburger bars, dark button backgrounds).
 
 ### Prices
 
-All prices — featured offers, product cards, anywhere — use the **sans** family with weight 600 for the active price and weight 400 strikethrough for the original. This matches Cox & Cox's spec (Gill Sans Nova, ~16px weight 600, normal letter-spacing) and gives consistent scannable pricing across the site:
+All prices — featured offers, product cards, anywhere — use the **sans** family with weight 600 for the active price and weight 400 strikethrough for the original. This gives consistent scannable pricing across the site (sans, ~16px weight 600, normal letter-spacing):
 
 - **Now-price**: Sans Jost weight 600, size 17–22px (clamped — featured offers slightly larger than listing tiles), colour `#444`, normal tracking.
 - **Was-price**: Sans Jost weight 400, 13–14px strikethrough, colour `#888`, normal tracking.
@@ -85,7 +85,7 @@ The serif (Cormorant Garamond) is **never used for prices, tile labels, or anyth
 
 ### Tile labels — always sans
 
-Both **homepage category tiles** (`.category-card__label`) and **sub-category tiles** (`.subcat-tile h3`) use **Sans Jost** — Cox & Cox uses Gill Sans for tile grids and reserves Baskerville for the page-hero H2 only.
+Both **homepage category tiles** (`.category-card__label`) and **sub-category tiles** (`.subcat-tile h3`) use **Sans Jost** — the sans is used for tile grids; the serif is reserved for the page-hero H2 only.
 
 - Category tile label: Sans, `clamp(16px, 1.6vw, 19px)`, weight 500, ls 0.04em
 - Sub-category tile heading: Sans, `clamp(17px, 1.6vw, 20px)`, weight 500, ls 0.02em
@@ -94,7 +94,7 @@ Both **homepage category tiles** (`.category-card__label`) and **sub-category ti
 ### Rules
 
 - **Letter-spacing is mostly normal.** Only tracked elements: H4 (0.1em), eyebrows (0.14em), buttons & nav (0.08–0.1em), product price 'was' (none — strikethrough does the visual work).
-- **No italic.** Cox doesn't use italic for emphasis — neither do we. `<em>` inside H1/H2 inherits everything (`font-style: normal; color: inherit`).
+- **No italic.** We don't use italic for emphasis. `<em>` inside H1/H2 inherits everything (`font-style: normal; color: inherit`).
 - **Capitalisation**: UPPERCASE only for H4 labels, nav links, buttons, eyebrows, and `.link-arrow`. Everything else is sentence/title case.
 - **Line-height**: 1.43 for body, 1.1–1.35 for headings. Tight on display headings (1.1), generous on body and product names (1.4+).
 - **Weights**: 400 (body, headings), 500 (sub-headings, product names, nav, eyebrows, buttons of lesser emphasis), 600 (buttons, prices, link-arrows — strong emphasis without going to a serif).
@@ -128,13 +128,13 @@ Four-step desktop-down cascade:
 | **`max-width: 640px`** | Phone. Tighter padding (`--gutter` becomes 16px). Categories in **2 columns**. Brands in 2 cols. Trust band vertical (icon above text). |
 | **`max-width: 420px`** | Small phone. Categories stay 2 cols (tighter gap). Hamburger and icons scaled down. |
 
-### Cox & Cox-style mobile header
+### Mobile header
 
 At ≤768px the header restructures into a **single row**: `[hamburger left] [logo centred] [account + basket right]`, with the search bar as a full-width second row below. Logo is fluid `clamp(60px, 19vw, 78px)` so it scales smoothly across phone widths (iPhone SE through Pro Max stay in the 60–78px range).
 
 ### Mobile drawer
 
-- Slides in from the **left** (Cox & Cox pattern)
+- Slides in from the **left**
 - Includes a dedicated **close X button** at the top-right of the drawer (the hamburger animates to X but isn't always reliable as the only close affordance)
 - Backdrop `rgba(15,25,22,.55)` fades in; tap to close
 - `body.menu-open { overflow: hidden }` locks the page scroll
@@ -236,7 +236,7 @@ At ≤768px the header restructures into a **single row**: `[hamburger left] [lo
 ## 8. Imagery
 
 ### Hero
-- **Editorial lifestyle photography** at Cox & Cox quality bar — soft natural light, real environments, plants/textures/wood
+- **Editorial lifestyle photography** at high editorial quality — soft natural light, real environments, plants/textures/wood
 - Aspect: `5:4` landscape on desktop, `4:5` portrait full-bleed on mobile
 - Mobile: image **above** copy, edge-to-edge (no horizontal gutter)
 - Source: Unsplash is fine; download locally to `assets/`, never hot-link
@@ -317,7 +317,7 @@ homepage-redesign/
 
 **Image sourcing priority:**
 1. Real product imagery from the live site (with transparent BG processed via PIL)
-2. Cox & Cox-style lifestyle photography from Unsplash (always downloaded locally)
+2. Editorial lifestyle photography from Unsplash (always downloaded locally)
 3. Custom CSS editorial cards as a last-resort fallback (gradient backgrounds, oversized type)
 
 ---

@@ -27,7 +27,7 @@ homepage-redesign/
 
 ## Working principles
 
-- **Stick to the Cox & Cox-inspired aesthetic** — editorial, warm-neutral, typography-led
+- **Stick to the refined editorial aesthetic** — editorial, warm-neutral, typography-led
 - **Don't introduce frameworks** (no Tailwind, no Bootstrap in the main page — the `bootstrap-port/` is the only Bootstrap-using variant)
 - **No JavaScript frameworks** — the page uses a single inline `<script>` for the mobile drawer and accordion. Keep dependencies minimal.
 - **Cache-bust on CSS changes** — bump the `?v=` query string on the stylesheet link in `index.html` whenever you change `styles.css`, so users see updates without manual refresh
@@ -47,7 +47,7 @@ Edit the `:root` custom properties at the top of `styles.css` so the change prop
 
 ## When adding new images
 
-- Cox & Cox-style lifestyle photos from Unsplash. **Always download locally to `assets/`** — never hot-link.
+- Editorial lifestyle photos from Unsplash. **Always download locally to `assets/`** — never hot-link.
 - Product images: process white backgrounds to transparent via the PIL flood-fill pattern (see `design.md` section 8). Save as PNG.
 - Naming: `category-{slug}.jpg`, `hero-{topic}.jpg`, `offer-{slug}.png`.
 
